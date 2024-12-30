@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
+import 'package:habitica/core/theme.dart';
 import 'package:habitica/core/service/database/database.dart';
 
 void main() {
@@ -16,6 +18,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MultiBlocProvider(
+        providers: [],
+        child: MaterialApp(
+          title: 'Habitica',
+          theme: themeData,
+          home: Container(),
+        ));
   }
 }
