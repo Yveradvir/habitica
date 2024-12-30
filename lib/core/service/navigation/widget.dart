@@ -8,8 +8,8 @@ import 'package:habitica/pages/calendar/screen.dart';
 import 'package:habitica/pages/new_habit/screen.dart';
 import 'package:habitica/pages/single_habit/screen.dart';
 
-class Router extends StatelessWidget {
-  const Router({super.key});
+class NavigationRouter extends StatelessWidget {
+  const NavigationRouter({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ part of 'calendar_bloc.dart';
 sealed class CalendarState {}
 
 final class CalendarInitial extends CalendarState {
-  final DateTime date;
+  final DateTime? date;
 
-  CalendarInitial({required this.date});
+  CalendarInitial({this.date});
 }

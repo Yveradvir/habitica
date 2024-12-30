@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habitica/core/const.dart';
+import 'package:habitica/core/service/navigation/widget.dart';
 import 'package:provider/provider.dart';
 
 import 'package:habitica/core/theme.dart';
@@ -24,7 +25,7 @@ class App extends StatelessWidget {
         child: MaterialApp(
           title: 'Habitica',
           theme: themeData,
-          home: Container(),
+          home: NavigationRouter(),
         ));
   }
 }

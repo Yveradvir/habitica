@@ -15,6 +15,6 @@ class NavigationCubit extends Cubit<NavigationState> {
 
   void goToHabits() => emit(HabitsPageState());
   void goToCalendar() => emit(CalendarPageState());
-  void goToCreateHabit() => emit(NewHabitPageState());
+  void goToNewHabit() => emit(NewHabitPageState());
   void goToSingleHabit() => emit(SingleHabitPageState());
 }

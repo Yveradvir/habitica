@@ -6,8 +6,9 @@ part 'calendar_event.dart';
 part 'calendar_state.dart';
 
 class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
-  CalendarBloc() : super(CalendarInitial(date: normalizeNow())) {
+  CalendarBloc() : super(CalendarInitial()) {
     on<CalendarChangeDataEvent>((event, emit) {
+      print(event.date);
       emit(CalendarInitial(date: normalizeDate(event.date)));
     });
   }

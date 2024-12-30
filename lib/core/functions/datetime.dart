@@ -2,7 +2,7 @@ DateTime normalizeDate(DateTime date) {
   return DateTime(date.year, date.month, date.day, 0, 0, 0, 0, 0);
 }
 
-DateTime normalizeNow() {
+DateTime normalizedNow() {
   return normalizeDate(DateTime.now());
 }
 
