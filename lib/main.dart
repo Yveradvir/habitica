@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habitica/core/const.dart';
 import 'package:provider/provider.dart';
 
 import 'package:habitica/core/theme.dart';
@@ -19,7 +20,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [],
+        providers: providersList,
         child: MaterialApp(
           title: 'Habitica',
           theme: themeData,

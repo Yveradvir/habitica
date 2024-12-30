@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:habitica/core/service/navigation/cubit.dart';
+
+import 'package:habitica/pages/calendar/bloc/calendar_bloc.dart';
+import 'package:habitica/pages/habits/bloc/habits_bloc.dart';
+import 'package:habitica/pages/new_habit/bloc/new_habit_bloc.dart';
+import 'package:habitica/pages/single_habit/bloc/single_habit_bloc.dart';
 
 const colorPallete = {
   "blue": Color.fromARGB(255, 124, 184, 255),
@@ -13,3 +21,11 @@ const colorPallete = {
 };
 
 final weekDays = List.from(["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]);
+
+List<BlocProvider> providersList = [
+  BlocProvider<NavigationCubit>(create: (context) => NavigationCubit()),
+  BlocProvider<CalendarBloc>(create: (create) => CalendarBloc()),
+  BlocProvider<HabitsBloc>(create: (create) => HabitsBloc()),
+  BlocProvider<NewHabitBloc>(create: (create) => NewHabitBloc()),
+  BlocProvider<SingleHabitBloc>(create: (create) => SingleHabitBloc()),
+];
