@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:habitica/core/service/database/tables.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
@@ -17,7 +18,7 @@ LazyDatabase _openConnection() {
   });
 }
 
-@DriftDatabase(tables: [])
+@DriftDatabase(tables: [Habit, HistoryRecord])
 class AppDb extends _$AppDb {
   AppDb() : super(_openConnection());
 
