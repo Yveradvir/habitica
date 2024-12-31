@@ -9,7 +9,7 @@ import 'package:habitica/pages/new_habit/bloc/new_habit_bloc.dart';
 import 'package:habitica/pages/single_habit/bloc/single_habit_bloc.dart';
 
 const colorPallete = {
-  "blue": Color.fromARGB(255, 124, 184, 255),
+  "blue": Color.fromARGB(255, 114, 168, 235),
   "pink": Color.fromARGB(255, 249, 37, 125),
   "green": Color.fromARGB(255, 118, 224, 115),
   "purple": Color.fromARGB(255, 238, 132, 255),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habitica/core/const.dart';
+import 'package:habitica/pages/new_habit/bloc/new_habit_bloc.dart';
 
 class HabitColorField extends StatefulWidget {
   final Color color;
@@ -9,7 +12,7 @@ class HabitColorField extends StatefulWidget {
 }
 
 class _HabitColorFieldState extends State<HabitColorField> {
-  late final Color color;
+  late Color color;
 
   @override
   void initState() {
@@ -51,5 +54,35 @@ class _HabitColorFieldState extends State<HabitColorField> {
     );
   }
 
-  void showColorPicker(BuildContext parentContext) {}
+  void showColorPicker(BuildContext parentContext) {
+    showModalBottomSheet(
+      context: parentContext,
+      builder: (context) {
+        return GridView.count(
+          crossAxisCount: 5,
+          shrinkWrap: true,
+          children: colorPallete.values.map((clr) {
+            return GestureDetector(
+              onTap: () {
+                setState(() {
+                  color = clr;
+                  parentContext
+                      .read<NewHabitBloc>()
+                      .add(NewHabitChangeEvent(color: clr));
+                });
+                Navigator.of(context).pop();
+              },
+              child: Container(
+                margin: const EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                  color: clr,
+                  shape: BoxShape.circle,
+                ),
+              ),
+            );
+          }).toList(),
+        );
+      },
+    );
+  }
 }
