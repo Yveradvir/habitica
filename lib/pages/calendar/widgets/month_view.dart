@@ -22,14 +22,12 @@ class MonthView extends StatelessWidget {
       (index) => DateTime(displayedMonth.year, displayedMonth.month, index + 1),
     );
 
-    final monthName = _getMonthName(displayedMonth.month);
-
     return Column(
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: Text(
-            '$monthName ${displayedMonth.year}',
+            '${_getMonthName(displayedMonth.month)} ${displayedMonth.year}',
             style: theme.textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
             ),
@@ -45,11 +43,9 @@ class MonthView extends StatelessWidget {
             itemCount: daysInMonth.length,
             itemBuilder: (context, index) {
               final day = daysInMonth[index];
-              final isActive = isDatesEqual(day, activeDate);
-
               return DayCard(
                 date: day,
-                isActive: isActive,
+                isActive: isDatesEqual(day, activeDate),
                 onTap: () => onDaySelected(day),
               );
             },

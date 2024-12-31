@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habitica/core/functions/datetime.dart';
-import 'package:habitica/pages/calendar/bloc/calendar_bloc.dart';
+import '../bloc/calendar_bloc.dart';
 import 'month_view.dart';
 
 class CalendarView extends StatefulWidget {
@@ -30,7 +30,6 @@ class _CalendarViewState extends State<CalendarView> {
   Widget build(BuildContext context) {
     return PageView.builder(
       controller: _pageController,
-      onPageChanged: (page) {},
       itemBuilder: (context, index) {
         final year = index ~/ 12;
         final month = index % 12 + 1;
