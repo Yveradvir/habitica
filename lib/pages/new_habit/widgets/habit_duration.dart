@@ -38,16 +38,31 @@ class _HabitDurationFieldState extends State<HabitDurationField> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Expanded(
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Expanded(
           child: GestureDetector(
-            onTap: () => showBottomTimePicker(context, color),
+        onTap: () => showBottomTimePicker(context, color),
+        child: Container(
+          height: 45,
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(30),
+            border: Border.all(color: Colors.black12),
           ),
-        )
-      ],
-    );
+          child: Center(
+            child: Text(
+              formatSecondsToString(duration),
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: color.computeLuminance() > 0.5
+                        ? Theme.of(context).scaffoldBackgroundColor
+                        : Colors.white,
+                    fontWeight: FontWeight.w700,
+                  ),
+            ),
+          ),
+        ),
+      ))
+    ]);
   }
 
   void showBottomTimePicker(BuildContext parentContext, Color color) {

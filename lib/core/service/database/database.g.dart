@@ -786,6 +786,9 @@ abstract class _$AppDb extends GeneratedDatabase {
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [habit, historyRecord];
+  @override
+  DriftDatabaseOptions get options =>
+      const DriftDatabaseOptions(storeDateTimeAsText: true);
 }
 
 typedef $$HabitTableCreateCompanionBuilder = HabitCompanion Function({
@@ -1105,7 +1108,7 @@ final class $$HistoryRecordTableReferences
 
   $$HabitTableProcessedTableManager get habitId {
     final manager = $$HabitTableTableManager($_db, $_db.habit)
-        .filter((f) => f.id($_item.habitId));
+        .filter((f) => f.id($_item.habitId!));
     final item = $_typedResult.readTableOrNull(_habitIdTable($_db));
     if (item == null) return manager;
     return ProcessedTableManager(

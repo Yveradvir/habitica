@@ -20,4 +20,8 @@ final class NewHabitChangeEvent extends NewHabitEvent {
       this.duration});
 }
 
-final class NewHabitSubmitEvent extends NewHabitEvent {}
+final class NewHabitSubmitEvent extends NewHabitEvent {
+  final AppDb db;
+
+  NewHabitSubmitEvent({required this.db});
+}

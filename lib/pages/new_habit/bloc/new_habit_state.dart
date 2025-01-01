@@ -22,6 +22,11 @@ final class NewHabitInitial extends NewHabitState {
 
 final class NewHabitSubmitting extends NewHabitState {}
 
-final class NewHabitError extends NewHabitState {}
+final class NewHabitError extends NewHabitState {
+  final String message;
+  final NewHabitInitial storagedState;
 
-final class NewHabitSuccess extends NewHabitEvent {}
+  NewHabitError(this.message, this.storagedState);
+}
+
+final class NewHabitSuccess extends NewHabitState {}
