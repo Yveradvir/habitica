@@ -1108,7 +1108,7 @@ final class $$HistoryRecordTableReferences
 
   $$HabitTableProcessedTableManager get habitId {
     final manager = $$HabitTableTableManager($_db, $_db.habit)
-        .filter((f) => f.id($_item.habitId!));
+        .filter((f) => f.id($_item.habitId));
     final item = $_typedResult.readTableOrNull(_habitIdTable($_db));
     if (item == null) return manager;
     return ProcessedTableManager(
