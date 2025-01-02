@@ -22,6 +22,21 @@ const colorPallete = {
 
 final weekDays = List.from(["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]);
 
+final List<String> months = List.from([
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+]);
+
 List<BlocProvider> providersList = [
   BlocProvider<NavigationCubit>(create: (context) => NavigationCubit()),
   BlocProvider<CalendarBloc>(create: (create) => CalendarBloc()),

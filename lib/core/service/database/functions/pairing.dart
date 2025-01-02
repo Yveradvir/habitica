@@ -8,6 +8,11 @@ class PairedHabit {
   final HistoryRecordData? historyRecord;
 
   PairedHabit({required this.habit, this.historyRecord});
+
+  @override
+  String toString() {
+    return "PairedHabit(habit: $habit, historyRecord: $historyRecord)";
+  }
 }
 
 Future<List<PairedHabit>> getPairedHabits(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habitica/core/functions/datetime.dart';
+import 'package:habitica/core/service/navigation/cubit.dart';
 import '../bloc/calendar_bloc.dart';
 import 'month_view.dart';
 
@@ -44,6 +45,7 @@ class _CalendarViewState extends State<CalendarView> {
             context
                 .read<CalendarBloc>()
                 .add(CalendarChangeDataEvent(date: activeDate));
+            context.read<NavigationCubit>().goToHabits();
           },
         );
       },
