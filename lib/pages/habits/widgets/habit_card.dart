@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habitica/core/functions/datetime.dart';
 import 'package:habitica/core/service/database/functions/pairing.dart';
 
 class HabitCard extends StatelessWidget {
@@ -36,36 +37,52 @@ class HabitCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 64,
-              height: 64,
-              margin: const EdgeInsets.only(right: 12.0),
-              decoration: BoxDecoration(
-                color: Color(pairedHabit.habit.color),
-                borderRadius: BorderRadius.circular(12.0),
+            GestureDetector(
+              onTap: () {
+                if (normalizedNow() != pairedHabit.historyRecord?.forDate) {
+                  return;
+                }
+              },
+              child: Container(
+                width: 54,
+                height: 54,
+                margin: const EdgeInsets.only(right: 12.0),
+                decoration: BoxDecoration(
+                  color: Color(pairedHabit.habit.color),
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: normalizedNow() == pairedHabit.historyRecord?.forDate
+                    ? Center(
+                        child: Icon(Icons.login,
+                            color: Theme.of(context).scaffoldBackgroundColor),
+                      )
+                    : Container(),
               ),
             ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    pairedHabit.habit.name,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    getText(),
-                    style: TextStyle(
-                      color: pairedHabit.historyRecord?.isDone == true
-                          ? Color(pairedHabit.habit.color)
-                          : Colors.white38,
-                      fontWeight: FontWeight.w600,
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      pairedHabit.habit.name,
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 8),
+                    Text(
+                      getText(),
+                      style: TextStyle(
+                        color: pairedHabit.historyRecord?.isDone == true
+                            ? Color(pairedHabit.habit.color)
+                            : Colors.white38,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
+            )
           ],
         ),
       ),

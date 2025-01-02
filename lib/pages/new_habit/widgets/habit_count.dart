@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habitica/pages/new_habit/bloc/new_habit_bloc.dart';
 
 class HabitCountField extends StatefulWidget {
   final Color color;
@@ -49,6 +51,9 @@ class _HabitCountFieldState extends State<HabitCountField> {
               setState(() {
                 count = (count > 1) ? count - 1 : 0;
               });
+              context
+                  .read<NewHabitBloc>()
+                  .add(NewHabitChangeEvent(count: count));
             },
             child: Container(
               height: 50,
@@ -94,6 +99,9 @@ class _HabitCountFieldState extends State<HabitCountField> {
               setState(() {
                 count++;
               });
+              context
+                  .read<NewHabitBloc>()
+                  .add(NewHabitChangeEvent(count: count));
             },
             child: Container(
               height: 50,
