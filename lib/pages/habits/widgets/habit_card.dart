@@ -59,9 +59,9 @@ class HabitCard extends StatelessWidget {
                     : Container(),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Expanded(
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

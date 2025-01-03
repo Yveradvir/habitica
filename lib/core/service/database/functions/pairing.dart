@@ -43,3 +43,11 @@ Future<List<PairedHabit>> getPairedHabits(
 
   return pairedHabits;
 }
+
+Future<PairedHabit> getPairedHabit(AppDb db, int recordId) {
+  return HistoryRecordController(db).getById(recordId).then((record) {
+    return HabitController(db).getById(record!.habitId).then((habit) {
+      return PairedHabit(habit: habit!, historyRecord: record);
+    });
+  });
+}
