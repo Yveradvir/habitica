@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:habitica/core/functions/datetime.dart';
+import 'package:habitica/core/service/database/database.dart';
 import 'package:habitica/core/service/database/functions/pairing.dart';
+import 'package:habitica/core/service/navigation/cubit.dart';
+import 'package:habitica/pages/single_habit/bloc/single_habit_bloc.dart';
+import 'package:provider/provider.dart';
 
 class HabitCard extends StatelessWidget {
   final PairedHabit pairedHabit;
@@ -42,6 +46,13 @@ class HabitCard extends StatelessWidget {
                 if (normalizedNow() != pairedHabit.historyRecord?.forDate) {
                   return;
                 }
+                var db = Provider.of<AppDb>(context, listen: false);
+                final id = pairedHabit.historyRecord?.id ?? 0;
+
+                context.read<NavigationCubit>().goToSingleHabit();
+                context
+                    .read<SingleHabitBloc>()
+                    .add(LoadSingleHabit(db: db, id: id));
               },
               child: Container(
                 width: 54,

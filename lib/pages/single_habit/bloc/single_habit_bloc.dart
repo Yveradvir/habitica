@@ -7,7 +7,7 @@ part 'single_habit_event.dart';
 part 'single_habit_state.dart';
 
 class SingleHabitBloc extends Bloc<SingleHabitEvent, SingleHabitState> {
-  SingleHabitBloc() : super(SingleHabitInitial()) {
+  SingleHabitBloc() : super(SingleHabitInitial(id: 0)) {
     on<LoadSingleHabit>((event, emit) async {
       emit(SingleHabitLoading());
       try {

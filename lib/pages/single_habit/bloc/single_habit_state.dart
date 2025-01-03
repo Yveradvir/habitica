@@ -3,7 +3,11 @@ part of 'single_habit_bloc.dart';
 @immutable
 sealed class SingleHabitState {}
 
-final class SingleHabitInitial extends SingleHabitState {}
+final class SingleHabitInitial extends SingleHabitState {
+  final int id;
+
+  SingleHabitInitial({required this.id});
+}
 
 final class SingleHabitLoading extends SingleHabitState {}
 
