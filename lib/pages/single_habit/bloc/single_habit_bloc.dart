@@ -9,6 +9,8 @@ part 'single_habit_state.dart';
 class SingleHabitBloc extends Bloc<SingleHabitEvent, SingleHabitState> {
   SingleHabitBloc() : super(SingleHabitInitial(id: 0)) {
     on<LoadSingleHabit>((event, emit) async {
+      print("LoadSingleHabit ${event.id}");
+      emit(SingleHabitInitial(id: event.id));
       emit(SingleHabitLoading());
       try {
         final PairedHabit pairedHabit =

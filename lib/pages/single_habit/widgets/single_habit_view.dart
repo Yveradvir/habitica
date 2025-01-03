@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:habitica/core/service/database/database.dart';
 import 'package:habitica/core/service/database/functions/pairing.dart';
 import 'package:habitica/pages/single_habit/widgets/single_habit_layout.dart';
+import 'package:habitica/pages/single_habit/widgets/typed_card.dart';
 
 class SingleHabitView extends StatefulWidget {
   final PairedHabit pairedHabit;
@@ -22,6 +23,17 @@ class _SingleHabitViewState extends State<SingleHabitView> {
     habit = widget.pairedHabit.habit;
     if (widget.pairedHabit.historyRecord != null) {
       record = widget.pairedHabit.historyRecord!;
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant SingleHabitView oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.pairedHabit != widget.pairedHabit) {
+      habit = widget.pairedHabit.habit;
+      if (widget.pairedHabit.historyRecord != null) {
+        record = widget.pairedHabit.historyRecord!;
+      }
     }
   }
 
@@ -47,14 +59,19 @@ class _SingleHabitViewState extends State<SingleHabitView> {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      habit.name,
-                      style: Theme.of(context).textTheme.headlineLarge,
+                    Center(
+                      child: Text(
+                        habit.name,
+                        style: Theme.of(context).textTheme.displayLarge,
+                      ),
                     ),
-                    const SizedBox(height: 8),
-                    // TODO: A instance for the habit information.
+                    const SizedBox(height: 16),
+                    TypedCard(
+                      habit: habit,
+                      record: record,
+                    )
                   ],
                 ),
               ),

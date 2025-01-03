@@ -41,4 +41,41 @@ class HistoryRecordController {
 
     return await query.get();
   }
+
+  Future<void> updateDynamic(
+      {required HistoryRecordData existingRecord,
+      required HabitData habit,
+      int? count,
+      int? duration,
+      bool? isDone}) async {
+    var changedCurrentCount = Value(existingRecord.currentCount);
+    var changedCurrentDuration = Value(existingRecord.currentDuration);
+    var changedIsDone = Value(existingRecord.isDone);
+
+    if (count != null && habit.type == "count") {
+      changedCurrentCount = Value(count);
+      changedIsDone = Value(count >= habit.count!);
+    }
+
+    if (duration != null && habit.type == "timer") {
+      changedCurrentDuration = Value(duration);
+      changedIsDone = Value(duration >= habit.duration!);
+    }
+    if (duration == null && count == null && isDone != null) {
+      changedIsDone = Value(isDone);
+    }
+
+    final updatedRecord = HistoryRecordCompanion(
+      id: Value(existingRecord.id),
+      isDone: changedIsDone,
+      currentCount: changedCurrentCount,
+      currentDuration: changedCurrentDuration,
+      habitId: Value(existingRecord.habitId),
+      forDate: Value(existingRecord.forDate),
+    );
+
+    await (db.update(db.historyRecord)
+          ..where((t) => t.id.equals(existingRecord.id)))
+        .write(updatedRecord);
+  }
 }
