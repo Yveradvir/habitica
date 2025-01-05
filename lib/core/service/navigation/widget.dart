@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:habitica/core/service/navigation/cubit.dart';
+import 'package:habitica/core/service/navigation/splash_screen.dart';
 
 import 'package:habitica/pages/habits/screen.dart';
 import 'package:habitica/pages/calendar/screen.dart';
@@ -15,7 +16,9 @@ class NavigationRouter extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NavigationCubit, NavigationState>(
       builder: (context, state) {
-        if (state is HabitsPageState) {
+        if (state is SplashPageState) {
+          return SplashScreen();
+        } else if (state is HabitsPageState) {
           return HabitsPageScreen();
         } else if (state is CalendarPageState) {
           return CalendarPageScreen();
